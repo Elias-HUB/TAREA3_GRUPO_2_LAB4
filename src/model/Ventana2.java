@@ -23,6 +23,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
 
 public class Ventana2 extends JFrame {
@@ -129,14 +130,45 @@ public class Ventana2 extends JFrame {
 		txbCondicion.setBounds(116, 53, 109, 20);
 		PanelResultados.add(txbCondicion);
 		
-		// ACA HAGO EL PROMEDIO
+		
 		JButton btnCalcular = new JButton("CALCULAR");
 		btnCalcular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Double prom = (Double.parseDouble(txbN1.getText())+ Double.parseDouble(txbN2.getText())+ Double.parseDouble(txbN3.getText()))/3;
-			    txbPromedio.setText(String.valueOf(prom));
-			}
-		});
+				// ACA HAGO EL PROMEDIO
+				try {
+					Double prom = (Double.parseDouble(txbN1.getText())+ Double.parseDouble(txbN2.getText())+ Double.parseDouble(txbN3.getText()))/3;
+					prom = Math.round(prom * 100) / 100d;
+					txbPromedio.setText(String.valueOf(prom));
+				}
+				catch(Exception e1) {
+				e1.printStackTrace();
+				}
+				//ACA EVALUO LA CONDICION
+				if(cboTP.getSelectedItem().equals("Desaprobado"))
+					{
+					txbCondicion.setText("Libre"); 
+					}
+				else if(Integer.parseInt(txbN1.getText())<6 
+					|| Integer.parseInt(txbN2.getText())<6 
+					|| Integer.parseInt(txbN3.getText())<6)
+						{
+						txbCondicion.setText("Libre");
+						}
+					else if(Integer.parseInt(txbN1.getText())>=6 && Integer.parseInt(txbN1.getText())<=8
+					    && Integer.parseInt(txbN2.getText())>=6 && Integer.parseInt(txbN3.getText())<=8 
+					    && Integer.parseInt(txbN3.getText())>=6 && Integer.parseInt(txbN3.getText())<=8  
+					    & cboTP.getSelectedItem().equals("Aprobado"))
+						{
+							txbCondicion.setText("Regular");
+						}
+					else 
+					{
+						txbCondicion.setText("Promocionado");
+					}
+					
+				}
+		}); 
+				
 		btnCalcular.setBounds(322, 37, 102, 30);
 		contentPane.add(btnCalcular);
 		
@@ -158,6 +190,7 @@ public class Ventana2 extends JFrame {
 		JButton btnSalir = new JButton("SALIR");
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 			}
 		});
 		btnSalir.setBounds(322, 118, 102, 30);
