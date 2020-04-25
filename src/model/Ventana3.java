@@ -42,7 +42,7 @@ public class Ventana3 extends JFrame {
 	public Ventana3() {
 		setResizable(false);
 		setFont(new Font("Dialog", Font.BOLD, 12));
-		setTitle("Ejercicio 3");
+		setTitle("Seleccion multiple");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 526, 334);
 		PanelEjer3 = new JPanel();
