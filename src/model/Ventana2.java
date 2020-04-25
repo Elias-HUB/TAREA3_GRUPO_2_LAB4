@@ -73,10 +73,9 @@ public class Ventana2 extends JFrame {
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char Validar = e.getKeyChar();
-				if(!Character.isDigit(Validar) & !Character.isDigit('.')) {
+					if(!Character.isDigit(Validar)) {
 					getToolkit().beep();
 					e.consume();
-					
 					JOptionPane.showMessageDialog(rootPane, "Ingrese solamente numeros");
 				}
 			}
@@ -119,7 +118,8 @@ public class Ventana2 extends JFrame {
 					e.consume();
 					JOptionPane.showMessageDialog(rootPane, "Ingrese solamente numeros");
 			}
-		}});
+					
+						}});
 		txbN3.setColumns(10);
 		txbN3.setBounds(115, 76, 110, 20);
 		PanelNotas.add(txbN3);
@@ -166,9 +166,22 @@ public class Ventana2 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// ACA HAGO EL PROMEDIO
 				try {
-					Double prom = (Double.parseDouble(txbN1.getText())+ Double.parseDouble(txbN2.getText())+ Double.parseDouble(txbN3.getText()))/3;
-					prom = Math.round(prom * 100) / 100d;
-					txbPromedio.setText(String.valueOf(prom));
+					int n1 = Integer.parseInt(txbN1.getText()); 
+					int n2 = Integer.parseInt(txbN2.getText()); 
+					int n3 = Integer.parseInt(txbN3.getText()); 
+					if(n1>10 || n2>10 || n3>10 )
+					{
+						JOptionPane.showMessageDialog(rootPane, "Ingrese un numero del 1 al 10");
+						txbPromedio.setText("");
+						txbCondicion.setText("");
+					}
+					else 
+					{
+						Double prom = (Double.parseDouble(txbN1.getText())+ Double.parseDouble(txbN2.getText())+ Double.parseDouble(txbN3.getText()))/3;
+						prom = Math.round(prom * 100) / 100d;
+						txbPromedio.setText(String.valueOf(prom));
+					}
+					
 					//ACA EVALUO LA CONDICION
 					if(cboTP.getSelectedItem().equals("Desaprobado"))
 						{
@@ -192,7 +205,10 @@ public class Ventana2 extends JFrame {
 								txbCondicion.setText("Regular");
 							}
 						
-						else
+						else if (Integer.parseInt(txbN1.getText())>=8 && Integer.parseInt(txbN1.getText())<=10
+							    && Integer.parseInt(txbN2.getText())>=8 && Integer.parseInt(txbN3.getText())<=10 
+							    && Integer.parseInt(txbN3.getText())>=8 && Integer.parseInt(txbN3.getText())<=10  
+							    & cboTP.getSelectedItem().equals("Aprobado"))
 						{
 							txbCondicion.setText("Promocionado");
 						}
