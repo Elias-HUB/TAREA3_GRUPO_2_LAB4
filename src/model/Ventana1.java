@@ -26,19 +26,8 @@ public class Ventana1 extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Ventana1 frame = new Ventana1();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
+	
 	/**
 	 * Create the frame.
 	 */
@@ -77,10 +66,7 @@ public class Ventana1 extends JFrame {
 		JButton btnMostrar = new JButton("Mostrar");
 		btnMostrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				txtNombre.setText("");
-				txtApellido.setText("");
-				txtTelefono.setText("");
-				txtFecha.setText("");
+				
 				if(txtNombre.getText().length()==0) 
 				{
 					//txtNombre.setBackground(255,0,0);
@@ -100,6 +86,7 @@ public class Ventana1 extends JFrame {
 				{
 					txtFecha.setBackground(Color.RED);
 				}
+
 				if(txtNombre.getText().length()>0 && txtApellido.getText().length()>0 && 
 						txtTelefono.getText().length()>0 && txtFecha.getText().length()>0)
 				{
@@ -114,7 +101,10 @@ public class Ventana1 extends JFrame {
 					txtTelefono.setText("");
 					txtFecha.setText("");
 				}				
-		
+				txtNombre.setText("");
+				txtApellido.setText("");
+				txtTelefono.setText("");
+				txtFecha.setText("");
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

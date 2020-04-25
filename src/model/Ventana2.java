@@ -18,6 +18,7 @@ import javax.swing.JTextArea;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import javax.swing.JComboBox;
@@ -25,6 +26,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Ventana2 extends JFrame {
 
@@ -39,18 +42,8 @@ public class Ventana2 extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Ventana2 frame = new Ventana2();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+
+	
 
 	/**
 	 * Create the frame.
@@ -74,6 +67,19 @@ public class Ventana2 extends JFrame {
 		PanelNotas.add(lblN1);
 		
 		txbN1 = new JTextField();
+		txbN1.addKeyListener(new KeyAdapter() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char Validar = e.getKeyChar();
+				if(!Character.isDigit(Validar) & !Character.isDigit('.')) {
+					getToolkit().beep();
+					e.consume();
+					
+					JOptionPane.showMessageDialog(rootPane, "Ingrese solamente numeros enteros");
+				}
+			}
+		});
 		txbN1.setBounds(115, 20, 110, 20);
 		PanelNotas.add(txbN1);
 		txbN1.setColumns(10);
@@ -83,6 +89,17 @@ public class Ventana2 extends JFrame {
 		PanelNotas.add(lblNota2);
 		
 		txbN2 = new JTextField();
+		txbN2.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char Validar = e.getKeyChar();
+				if(!Character.isDigit(Validar)) {
+					getToolkit().beep();
+					e.consume();
+					JOptionPane.showMessageDialog(rootPane, "Ingrese solamente numeros enteros");
+				}
+			}
+		});
 		txbN2.setColumns(10);
 		txbN2.setBounds(115, 48, 110, 20);
 		PanelNotas.add(txbN2);
@@ -92,6 +109,11 @@ public class Ventana2 extends JFrame {
 		PanelNotas.add(lblN3);
 		
 		txbN3 = new JTextField();
+		txbN3.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+			}
+		});
 		txbN3.setColumns(10);
 		txbN3.setBounds(115, 76, 110, 20);
 		PanelNotas.add(txbN3);
@@ -141,7 +163,7 @@ public class Ventana2 extends JFrame {
 					txbPromedio.setText(String.valueOf(prom));
 				}
 				catch(Exception e1) {
-				e1.printStackTrace();
+					   JOptionPane.showMessageDialog(rootPane, e1.getCause());
 				}
 				//ACA EVALUO LA CONDICION
 				if(cboTP.getSelectedItem().equals("Desaprobado"))
