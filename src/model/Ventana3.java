@@ -1,36 +1,23 @@
 package model;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.GridBagLayout;
-import javax.swing.JTextField;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import javax.swing.SpringLayout;
-import net.miginfocom.swing.MigLayout;
 import javax.swing.JRadioButton;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JButton;
-import javax.swing.border.BevelBorder;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.border.CompoundBorder;
+
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JCheckBox;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.LayoutStyle.ComponentPlacement;
+
+import javax.swing.ButtonGroup;
+
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -38,36 +25,22 @@ import javax.swing.JFormattedTextField;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+
 public class Ventana3 extends JFrame {
 
 	/**
-	 * 
+	 * Prop
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel PanelEjer3;
 	private JFormattedTextField TboxHoras;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Ventana3 frame = new Ventana3();
-					frame.setVisible(true);
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
 	public Ventana3() {
+		setResizable(false);
 		setFont(new Font("Dialog", Font.BOLD, 12));
 		setTitle("Ejercicio 3");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -86,17 +59,21 @@ public class Ventana3 extends JFrame {
 		JRadioButton RbtnLinux = new JRadioButton("Linux");
 		RbtnLinux.setFont(new Font("Tahoma", Font.BOLD, 13));
 		RbtnLinux.setBounds(403, 7, 81, 41);
+		RbtnLinux.setActionCommand("Linux");
 		PanelSisOpe.add(RbtnLinux);
 		
 		JRadioButton RbtnMac = new JRadioButton("Mac");
 		RbtnMac.setFont(new Font("Tahoma", Font.BOLD, 13));
 		RbtnMac.setBounds(320, 7, 81, 41);
+		RbtnMac.setActionCommand("Mac");
 		PanelSisOpe.add(RbtnMac);
 		
 		JRadioButton RbtnWindows = new JRadioButton("Windows");
 		RbtnWindows.setFont(new Font("Tahoma", Font.BOLD, 13));
 		RbtnWindows.setBounds(202, 7, 102, 41);
+		RbtnWindows.setActionCommand("Windows");
 		PanelSisOpe.add(RbtnWindows);
+	
 		
 		JLabel LblElijeUnSistema = new JLabel("Elije un sistema Operativo");
 		LblElijeUnSistema.setFont(new Font("Tahoma", Font.BOLD, 13));
@@ -121,6 +98,7 @@ public class Ventana3 extends JFrame {
 		gbc_CboxProgramacion.insets = new Insets(0, 0, 5, 0);
 		gbc_CboxProgramacion.gridx = 1;
 		gbc_CboxProgramacion.gridy = 0;
+		CboxProgramacion.setActionCommand("Programación");
 		panelEspecialidad.add(CboxProgramacion, gbc_CboxProgramacion);
 		
 		JLabel LblElijeUnaEspecialidad = new JLabel("Elije Una especialidad");
@@ -138,6 +116,7 @@ public class Ventana3 extends JFrame {
 		gbc_CboxAdministracion.insets = new Insets(0, 0, 5, 0);
 		gbc_CboxAdministracion.gridx = 1;
 		gbc_CboxAdministracion.gridy = 1;
+		CboxAdministracion.setActionCommand("Administración");
 		panelEspecialidad.add(CboxAdministracion, gbc_CboxAdministracion);
 		
 		JCheckBox CboxDiseñoGrafico = new JCheckBox("Dise\u00F1o Gr\u00E1fico");
@@ -146,6 +125,7 @@ public class Ventana3 extends JFrame {
 		gbc_CboxDiseñoGrafico.fill = GridBagConstraints.HORIZONTAL;
 		gbc_CboxDiseñoGrafico.gridx = 1;
 		gbc_CboxDiseñoGrafico.gridy = 2;
+		CboxDiseñoGrafico.setActionCommand("Diseño Gráfico");
 		panelEspecialidad.add(CboxDiseñoGrafico, gbc_CboxDiseñoGrafico);
 		
 		JLabel LblHotas = new JLabel("Cantidad de horas en el computador:");
@@ -154,6 +134,59 @@ public class Ventana3 extends JFrame {
 		PanelEjer3.add(LblHotas);
 		
 		TboxHoras = new JFormattedTextField();
+		TboxHoras.setHorizontalAlignment(SwingConstants.LEFT);
+		TboxHoras.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		TboxHoras.setBounds(301, 227, 86, 20);
+		PanelEjer3.add(TboxHoras);
+		TboxHoras.setColumns(10);
+		
+		JButton BtnAceptar = new JButton("Aceptar");
+		BtnAceptar.setBounds(398, 261, 89, 23);
+		PanelEjer3.add(BtnAceptar);
+		
+		
+		
+		
+		/**
+		 * Grupo JRadioButton
+		 */
+		ButtonGroup grupoRbtn = new ButtonGroup();
+		grupoRbtn.add(RbtnWindows);
+		grupoRbtn.add(RbtnMac);
+		grupoRbtn.add(RbtnLinux);
+
+		
+		/**
+		 * Eventos
+		 */		
+		
+		BtnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {			
+				String Mensaje= "";
+				if((CboxAdministracion.isSelected() == false && CboxDiseñoGrafico.isSelected() == false && CboxProgramacion.isSelected() == false ) || grupoRbtn.getSelection() == null || TboxHoras.getText().length() == 0){				
+					if(CboxAdministracion.isSelected() == false && CboxDiseñoGrafico.isSelected() == false && CboxProgramacion.isSelected() == false && grupoRbtn.getSelection() == null && TboxHoras.getText().length() == 0) {
+						JOptionPane.showMessageDialog(rootPane, "Por favor complete todos los campos");
+					}
+					else if(grupoRbtn.getSelection() == null) {
+						JOptionPane.showMessageDialog(rootPane, "Por favor Seleccione un sistema operativo");
+					}
+					else if(CboxAdministracion.isSelected() == false && CboxDiseñoGrafico.isSelected() == false && CboxProgramacion.isSelected() == false) {
+						JOptionPane.showMessageDialog(rootPane, "Por favor Seleccione por lo menos una especialidad");
+					}
+					else if(TboxHoras.getText().length() == 0){
+						JOptionPane.showMessageDialog(rootPane, "Por favor ingrese la cantidad de horas");
+					}										
+				}
+				else {
+					if(CboxAdministracion.isSelected() == true) Mensaje= Mensaje + CboxAdministracion.getText() + " - ";
+					if(CboxDiseñoGrafico.isSelected() == true) Mensaje= Mensaje + CboxDiseñoGrafico.getText() + " - "; 
+					if(CboxProgramacion.isSelected() == true ) Mensaje= Mensaje + CboxProgramacion.getText() + " - ";
+					JOptionPane.showMessageDialog(rootPane,grupoRbtn.getSelection().getActionCommand()+ " - "+ Mensaje + TboxHoras.getText() + "Hs");
+				}				
+			}
+		});
+		
+
 		TboxHoras.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent evt) {
@@ -167,18 +200,9 @@ public class Ventana3 extends JFrame {
 				}
 			}
 		});
-		TboxHoras.setHorizontalAlignment(SwingConstants.LEFT);
-		TboxHoras.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		TboxHoras.setBounds(301, 227, 86, 20);
-		PanelEjer3.add(TboxHoras);
-		TboxHoras.setColumns(10);
 		
-		JButton BtnAceptar = new JButton("Aceptar");
-		BtnAceptar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		BtnAceptar.setBounds(398, 261, 89, 23);
-		PanelEjer3.add(BtnAceptar);
+		
 	}
+	
+
 }
