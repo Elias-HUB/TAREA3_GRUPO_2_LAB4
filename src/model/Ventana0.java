@@ -86,6 +86,7 @@ public class Ventana0 extends JFrame {
 		JButton btnEjercicio3 = new JButton("Ejercicio 3");
 		btnEjercicio3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Ventana3 v3 = new Ventana3(); 
 				v3.setVisible(true);
 			}
 		});
