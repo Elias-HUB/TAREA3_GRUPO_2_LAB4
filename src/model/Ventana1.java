@@ -96,15 +96,7 @@ public class Ventana1 extends JFrame {
 					txtFecha.setBackground(Color.WHITE);
 					lblResultado.setText(txtNombre.getText()+", "+txtApellido.getText()+", "+
 							txtTelefono.getText()+", "+txtFecha.getText());
-					txtNombre.setText("");
-					txtApellido.setText("");
-					txtTelefono.setText("");
-					txtFecha.setText("");
 				}				
-				txtNombre.setText("");
-				txtApellido.setText("");
-				txtTelefono.setText("");
-				txtFecha.setText("");
 			}
 		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

@@ -218,6 +218,7 @@ public class Ventana2 extends JFrame {
 					JOptionPane.showMessageDialog(rootPane, "Ingrese notas");
 				}
 				catch(Exception e1) {
+					txbPromedio.setText("");
 					JOptionPane.showMessageDialog(rootPane, "Ingrese condicion de TP");
 				}
 
